@@ -1,11 +1,12 @@
 import argparse
-from lib import fileCommon, readFieldnames
+from lib import fileCommon, readFieldnames, rename
 
 parser = argparse.ArgumentParser(description="A PDF CLI Tool")
 
 parser.add_argument('-i', '--input', type=str, required=True, help='input File')
 parser.add_argument('-o', '--output', type=str, help='output')
-parser.add_argument('-rf', '--readfieldnames', action='store_true', help='output')
+parser.add_argument('-rf', '--readfieldnames', action='store_true', help='read fieldnames')
+parser.add_argument('-rn', '--renamefieldnames', type=str, help='rename fieldnames')
 
 # # Argumente parsen
 args = parser.parse_args()
@@ -22,11 +23,14 @@ if args.readfieldnames:
     else: 
         readFieldnames.readFieldnames(args.input)
  
-
-# # Zugriff auf die übergebenen Parameter
-# print(f"Eingabedatei: {args.input}")
-# print(f"Ausgabedatei: {args.output}")
-
-# # Hier kannst du dann den Logikteil deines Programms hinzufügen
-# # Beispiel: Datei öffnen, lesen und verarbeiten
+if args.renamefieldnames:
+    if not args.output:
+        print(f"Required Output pdf File")
+        exit()
+    fileCommon.check_exits_file(args.input)
+    fileCommon.is_pdf(args.input)
+    fileCommon.is_json(args.renamefieldnames)
+    rename.renameFields(args.input, args.renamefieldnames , args.output)
+     
+ 
 
