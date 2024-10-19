@@ -11,3 +11,9 @@ def is_pdf(file):
     if (file_art[0] != 'pdf'): 
         print(f"File is not an PDF")
         exit()
+        
+def is_json(file): 
+    file_art = file.split(".")[-1:]
+    if(file_art[0] != 'json'):
+        print(f'File is not an JSON')
+        exit()
