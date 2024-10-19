@@ -1,5 +1,5 @@
 import argparse
-from lib import fileCommon, readFieldnames, rename, merge, split
+from lib import fileCommon, readFieldnames, rename, merge, split, password
 
 parser = argparse.ArgumentParser(description="A PDF CLI Tool")
 
@@ -9,6 +9,9 @@ parser.add_argument('-rf', '--readfieldnames', action='store_true', help='read f
 parser.add_argument('-rn', '--renamefieldnames', type=str, help='rename fieldnames')
 parser.add_argument('-m', '--merge', type=str, help='merge two pdfs in one')
 parser.add_argument('-s', '--split', type=int, help='split a Pdf')
+parser.add_argument('-dc', '--decrypt', action='store_true', help='split a Pdf')
+parser.add_argument('-ec', '--encrypt', action='store_true', help='split a Pdf')
+parser.add_argument('-p', '--password', type=str, help='password')
 
 # # Argumente parsen
 args = parser.parse_args()
@@ -46,3 +49,27 @@ if args.split:
      fileCommon.check_exits_file(args.input)   
      split.split(args.input,args.split )
  
+if args.decrypt: 
+    if not args.password:
+        print(f"No Password found")
+        exit
+    if not args.output:
+        print(f"Required Output pdf File")
+        exit()
+    fileCommon.check_exits_file(args.input)
+    password.decrypt_file_with_password(args.input, args.output, args.password)
+    
+
+if args.encrypt:
+    if not args.password:
+        print(f"No Password found")
+        exit
+    if not args.output:
+        print(f"Required Output pdf File")
+        exit()
+    fileCommon.check_exits_file(args.input)
+    password.encrypt_file_with_password(args.input, args.output, args.password)
+    
+
+    
+# info for the pdf
