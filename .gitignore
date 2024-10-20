@@ -1,4 +1,8 @@
-dist
-cli_pdf.egg-info
+build/
+dist/
+*.egg-info/
 
-__pycahce__/
+__pycache__/
+*.py[cod]
+
+.vscode/

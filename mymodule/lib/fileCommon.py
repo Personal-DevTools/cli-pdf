@@ -67,13 +67,6 @@ def info_pdf(args):
             height = page.mediabox.height
             print(f"  Page {i + 1}: {layout} - Width: {width} pt, Height: {height} pt")
         
-        print("\nFonts used (if available):")
-        if "/Font" in reader.pages[0].resources:
-            fonts = reader.pages[0].resources['/Font']
-            for font_key in fonts:
-                print(f"  {font_key}: {fonts[font_key]}")
-        else:
-            print("No fonts detected.")
         
         if fields:
             print("\nForm fields:")

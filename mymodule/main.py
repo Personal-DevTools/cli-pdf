@@ -1,5 +1,5 @@
 import argparse
-from mymodule.lib import fileCommon, readFieldnames, rename, merge, split, password
+from lib import fileCommon, readFieldnames, rename, merge, split, password, test
 
 
 def main():
@@ -21,6 +21,7 @@ def main():
     if args.input:
         fileCommon.check_exits_file(args.input)
         fileCommon.is_pdf(args.input)
+        
 
     if args.readfieldnames: 
         if args.output:
@@ -33,8 +34,6 @@ def main():
         if not args.output:
             print(f"Required Output pdf File")
             exit()
-        fileCommon.check_exits_file(args.input)
-        fileCommon.is_pdf(args.input)
         fileCommon.is_json(args.renamefieldnames)
         rename.renameFields(args.input, args.renamefieldnames, args.output)
 
@@ -42,7 +41,6 @@ def main():
         if not args.output:
             print(f"Required Output pdf File")
             exit()
-        fileCommon.check_exits_file(args.input)
         fileCommon.check_exits_file(args.merge)
         merge.mergeFiles(args.input, args.merge, args.output)
 
@@ -57,7 +55,6 @@ def main():
         if not args.output:
             print(f"Required Output pdf File")
             exit()
-        fileCommon.check_exits_file(args.input)
         password.decrypt_file_with_password(args.input, args.output, args.password)
 
     if args.encrypt:
@@ -71,8 +68,6 @@ def main():
         password.encrypt_file_with_password(args.input, args.output, args.password)
 
     if args.info:
-        fileCommon.check_exits_file(args.input)
-        fileCommon.is_pdf(args.input)
-        fileCommon.testing()
+        fileCommon.info_pdf(args)
 if __name__ == "__main__":
     main()

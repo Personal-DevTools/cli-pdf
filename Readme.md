@@ -25,7 +25,7 @@ Alternatively, you can install it from source by cloning the repository:
 
 .. code-block:: bash
 
-    git clone https://github.com/yourusername/cli-pdf.git
+    git clone https://github.com/Personal-DevTools/cli-pdf
     cd cli-pdf
     pip install .
 
