@@ -1,5 +1,6 @@
 import argparse
-from mymodule.lib import fileCommon, readFieldnames, rename, merge, split, password  # Angepasst auf mymodule.lib
+from mymodule.lib import fileCommon, readFieldnames, rename, merge, split, password
+
 
 def main():
     parser = argparse.ArgumentParser(description="A PDF CLI Tool")
@@ -13,8 +14,8 @@ def main():
     parser.add_argument('-dc', '--decrypt', action='store_true', help='decrypt a Pdf')
     parser.add_argument('-ec', '--encrypt', action='store_true', help='encrypt a Pdf')
     parser.add_argument('-p', '--password', type=str, help='password')
+    parser.add_argument('-if', '--info', action='store_true', help='Info of the PDF')
 
-    # Argumente parsen
     args = parser.parse_args()
 
     if args.input:
@@ -69,5 +70,9 @@ def main():
         fileCommon.check_exits_file(args.input)
         password.encrypt_file_with_password(args.input, args.output, args.password)
 
+    if args.info:
+        fileCommon.check_exits_file(args.input)
+        fileCommon.is_pdf(args.input)
+        fileCommon.testing()
 if __name__ == "__main__":
     main()
