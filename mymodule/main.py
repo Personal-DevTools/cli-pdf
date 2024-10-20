@@ -1,5 +1,5 @@
 import argparse
-from lib import fileCommon, readFieldnames, rename, merge, split, password, test
+from lib import fileCommon, readFieldnames, rename, merge, split, password
 
 
 def main():

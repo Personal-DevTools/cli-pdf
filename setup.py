@@ -6,7 +6,7 @@ with open('requirements.txt') as f:
 
     setup(
         name='cli-pdf',
-        version='1.0.0',
+        version='1.0.1',
         description='A PDF CLI tool.',
         author='Bichler Bastian',
         author_email='bichlerbastian@gmail.com',
