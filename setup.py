@@ -6,11 +6,13 @@ with open('requirements.txt') as f:
 
     setup(
         name='cli-pdf',
-        version='1.0.1',
+        version='1.0.0',
         description='A PDF CLI tool.',
         author='Bichler Bastian',
         author_email='bichlerbastian@gmail.com',
         packages=find_packages(), 
+        long_description=open('README.rst').read(),
+        long_description_content_type='text/x-rst',  # Typ für reStructuredText
         install_requires=requirements,
         entry_points={
             'console_scripts': [
