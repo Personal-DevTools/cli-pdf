@@ -18,10 +18,7 @@ def is_json(file):
     if(file_art[0] != 'json'):
         print(f'File is not an JSON')
         exit()
-        
-def testing():
-    print(f"testing")
-        
+      
         
 def info_pdf(args):
     with open(args.input, 'rb') as pdf_file:
